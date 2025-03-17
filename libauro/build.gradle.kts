@@ -26,6 +26,19 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+    publishing {
+        singleVariant("release") {
+            // if you don't want sources/javadoc, remove these lines
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+    dexOptions {
+        incremental = true
+        javaMaxHeapSize = "4g"
+        preDexLibraries = true
+        dexInProcess = true
+    }
 }
 dependencies {
 
@@ -110,18 +123,13 @@ dependencies {
     implementation(libs.play.services.auth.api.phone)
     implementation(libs.play.services.auth)
     implementation(libs.play.services.auth.v2050)
-
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
-
     implementation (libs.accompanist.pager)
-
     implementation (libs.foundation)
     implementation (libs.accompanist.pager.indicators)
-
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.androidx.browser)
-
     //location
     implementation(libs.play.services.location)
     implementation(libs.accompanist.permissions)
@@ -129,8 +137,8 @@ dependencies {
     implementation(libs.firebase.crashlytics.ktx)
     // Lottie for animation
     implementation(libs.lottie)
-
 }
+
 afterEvaluate {
     publishing {
         publications {
@@ -138,7 +146,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.manjudeveloper2021"
                 artifactId = "IntegrateLibraryAuroscholarApp"
-                version = "0.1.1"
+                version = "0.1.2"
             }
         }
     }
