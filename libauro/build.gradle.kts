@@ -127,7 +127,6 @@ dependencies {
     implementation(libs.accompanist.permissions)
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.crashlytics.ktx)
-
     // Lottie for animation
     implementation(libs.lottie)
 
@@ -137,9 +136,9 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "com.github.AuroSdk"
-                artifactId = "LibraryAuroSDK"
-                version = "0.1.0"
+                groupId = "com.github.manjudeveloper2021"
+                artifactId = "IntegrateLibraryAuroscholarApp"
+                version = "0.1.1"
             }
         }
     }
