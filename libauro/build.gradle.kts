@@ -6,7 +6,6 @@ plugins {
     id("kotlin-parcelize")
     id ("com.google.dagger.hilt.android")
 }
-
 android {
     compileSdk = 34
     defaultConfig {
@@ -27,9 +26,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
-
 }
-
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -53,7 +50,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.adaptive.android)
-
 //    def camerax_version = "1.3.0-beta01"
    /* implementation (libs.androidx.camera.camera2.v134)
     implementation (libs.androidx.camera.extensions.v134)*/
@@ -136,14 +132,13 @@ dependencies {
     implementation(libs.lottie)
 
 }
-
 afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
                 groupId = "com.github.AuroSdk"
-                artifactId = "Auro_Scholar_Library"
+                artifactId = "LibraryAuroSDK"
                 version = "0.1.0"
             }
         }

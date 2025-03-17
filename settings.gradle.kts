@@ -9,7 +9,8 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
-        maven { url = uri("https://jitpack.io") }
+       // maven { url = uri("https://jitpack.io") }
+        maven("https://jitpack.io")
     }
 }
 dependencyResolutionManagement {
@@ -20,7 +21,6 @@ dependencyResolutionManagement {
         maven { url = uri("https://jitpack.io") }
     }
 }
-
 rootProject.name = "IntegrateLibraryAuroscholarApp"
 include(":app")
 include(":libauro")
