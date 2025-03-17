@@ -7,7 +7,8 @@ plugins {
     id ("com.google.dagger.hilt.android")
 }
 android {
-    compileSdk = 34
+    namespace = "com.auro.application"
+    compileSdk = 35
     defaultConfig {
         minSdk = 24   //24
         targetSdk = 34
@@ -138,7 +139,6 @@ dependencies {
     // Lottie for animation
     implementation(libs.lottie)
 }
-
 afterEvaluate {
     publishing {
         publications {
@@ -146,7 +146,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.manjudeveloper2021"
                 artifactId = "IntegrateLibraryAuroscholarApp"
-                version = "0.1.2"
+                version = "0.1.3"
             }
         }
     }
