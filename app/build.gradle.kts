@@ -88,9 +88,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.accompanist.navigation.animation)
     implementation(libs.kotlinx.serialization.json)
-
-
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -102,7 +99,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.espresso.core)
     implementation(libs.androidx.runtime.livedata)
-
     implementation(libs.androidx.camera.core)
     implementation(libs.androidx.camera.camera2)
     implementation(libs.androidx.camera.extensions)
@@ -168,7 +164,5 @@ dependencies {
     implementation(libs.firebase.crashlytics.ktx)
     // Lottie for animation
     implementation(libs.lottie)
-
     implementation(project(mapOf("path" to ":libauro")))
-
 }

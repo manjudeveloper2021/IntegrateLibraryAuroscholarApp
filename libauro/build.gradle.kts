@@ -146,7 +146,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.manjudeveloper2021"
                 artifactId = "IntegrateLibraryAuroscholarApp"
-                version = "0.1.3"
+                version = "0.1.4"
             }
         }
     }
