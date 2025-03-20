@@ -22,6 +22,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ScrollableTabRow
@@ -489,27 +490,42 @@ fun QuizTopPerformingList(
                         .padding(10.dp)
                 )
 
-                TextField(
+                OutlinedTextField(
                     value = searchText,
-                    onValueChange = { newText ->
-                        searchText = newText
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(color = Color.White), // Set background color to white
+                    onValueChange = { searchText = it },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
+                        .background(color = Color.White),
                     placeholder = {
                         Text(
                             "Search by concept name ", color = Color.Gray
                         )
-                    }, // Placeholder text color
-                    colors = TextFieldDefaults.textFieldColors(
-                        containerColor = Color.White,
-                        cursorColor = Black,
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent
-                    ),
-                    singleLine = true
+                    },
                 )
+
+//                TextField(
+//                    value = searchText,
+//                    onValueChange = { newText ->
+//                        searchText = newText
+//                    },
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .background(color = Color.White), // Set background color to white
+//                    placeholder = {
+//                        Text(
+//                            "Search by concept name ", color = Color.Gray
+//                        )
+//                    }, // Placeholder text color
+//                    colors = TextFieldDefaults,
+//
+////                        .textFieldColors(
+////                        containerColor = Color.White,
+////                        cursorColor = Black,
+////                        focusedIndicatorColor = Color.Transparent,
+////                        unfocusedIndicatorColor = Color.Transparent
+////                    ),
+//                    singleLine = true
+//                )
 
             }
         }

@@ -31,6 +31,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
@@ -748,7 +749,7 @@ fun SchoolListBottomSheet(
             shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
             dragHandle = null,
             scrimColor = Color.Black.copy(alpha = 0.5f),
-            windowInsets = WindowInsets(0, 0, 0, 0).add(WindowInsets.ime)
+           // windowInsets = WindowInsets(0, 0, 0, 0).add(WindowInsets.ime)
         ) {
             var text by remember { mutableStateOf("") }
             val filteredList = remember(myList, text) {
@@ -776,28 +777,46 @@ fun SchoolListBottomSheet(
                             .padding(10.dp)
                             .background(Color.Unspecified)
                     )
-                    TextField(
+
+
+                    OutlinedTextField(
                         value = text,
-                        onValueChange = { newText ->
-                            text = newText
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(color = Color.White), // Set background color to white
+                        onValueChange = { text = it },
+                        label = { Text("Username") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth()
+                            .background(color = Color.White),
                         placeholder = {
                             Text(
                                 text = languageData[LanguageTranslationsResponse.KEY_SEARCH_SCHOOL].toString(),
                                 color = Color.Gray
                             )
-                        }, // Placeholder text color
-                        colors = TextFieldDefaults.textFieldColors(
-                            containerColor = Color.White,
-                            cursorColor = Black,
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent
-                        ),
-                        singleLine = true
+                        },
                     )
+
+//                    TextField(
+//                        value = text,
+//                        onValueChange = { newText ->
+//                            text = newText
+//                        },
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//                            .background(color = Color.White), // Set background color to white
+//                        placeholder = {
+//                            Text(
+//                                text = languageData[LanguageTranslationsResponse.KEY_SEARCH_SCHOOL].toString(),
+//                                color = Color.Gray
+//                            )
+//                        }, // Placeholder text color
+//                        colors = TextFieldDefaults
+//                            .textFieldColors(
+//                            containerColor = Color.White,
+//                            cursorColor = Black,
+//                            focusedIndicatorColor = Color.Transparent,
+//                            unfocusedIndicatorColor = Color.Transparent
+//                        )
+//                        singleLine = true
+//                    )
                 }
                 val selectedItem = remember { mutableStateOf<String?>(null) }
                 val filteredListWithOther =
@@ -843,7 +862,6 @@ private fun search(onDecline: () -> Unit = {}, onDismiss: () -> Unit = {}) {
     val filteredList = remember(myList, text) {
         myList.filter { it.toString().contains(text, ignoreCase = true) }
     }
-
     Column(modifier = Modifier.background(color = Color.White)) {
         Row(
             modifier = Modifier
@@ -861,27 +879,44 @@ private fun search(onDecline: () -> Unit = {}, onDismiss: () -> Unit = {}) {
                     .padding(10.dp)
                     .background(Color.Unspecified)
             )
-            TextField(
+
+            OutlinedTextField(
                 value = text,
-                onValueChange = { newText ->
-                    text = newText
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(color = Color.White), // Set background color to white
+                onValueChange = { text = it },
+                label = { Text("Username") },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth()
+                    .background(color = Color.White),
                 placeholder = {
                     Text(
                         "Search School ", color = Color.Gray
                     )
-                }, // Placeholder text color
-                colors = TextFieldDefaults.textFieldColors(
-                    containerColor = Color.White,
-                    cursorColor = Black,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                ),
-                singleLine = true
+                },
             )
+
+
+//            TextField(
+//                value = text,
+//                onValueChange =     { newText ->
+//                    text = newText
+//                },
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .background(color = Color.White), // Set background color to white
+//                placeholder = {
+//                    Text(
+//                        "Search School ", color = Color.Gray
+//                    )
+//                }, // Placeholder text color
+//                colors = TextFieldDefaults
+//                    .textFieldColors(
+//                    containerColor = Color.White,
+//                    cursorColor = Black,
+//                    focusedIndicatorColor = Color.Transparent,
+//                    unfocusedIndicatorColor = Color.Transparent
+//                ),
+//                singleLine = true
+//            )
         }
         val contex = LocalContext.current
         LazyColumn {

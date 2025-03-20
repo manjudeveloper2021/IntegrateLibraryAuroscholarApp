@@ -776,16 +776,17 @@ fun Withdraw(
     clickedTitle: (String) -> Unit
 ) {
     val state = rememberDateRangePickerState()
-    val bottomSheetState =
-        androidx.compose.material.rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden,
-            confirmStateChange = { targetValue ->
-                if (targetValue == ModalBottomSheetValue.Hidden) {
-                    onDismiss() // Call the onDismiss callback when the bottom sheet is hidden
-                    true // Allow the state change
-                } else {
-                    true // Allow other state changes
-                }
-            })
+    val bottomSheetState = rememberModalBottomSheetState(
+//        initialValue = ModalBottomSheetValue.Hidden,
+//            confirmStateChange = { targetValue ->
+//                if (targetValue == ModalBottomSheetValue.Hidden) {
+//                    onDismiss() // Call the onDismiss callback when the bottom sheet is hidden
+//                    true // Allow the state change
+//                } else {
+//                    true // Allow other state changes
+//                }
+//            }
+    )
     val coroutineScope = rememberCoroutineScope()
 
     // Show the bottom sheet when the composable is first launched
@@ -796,7 +797,7 @@ fun Withdraw(
     }
 
     ModalBottomSheetLayout(
-        sheetState = bottomSheetState,
+      //  sheetState = bottomSheetState,
         sheetContent = {
             Box(
                 modifier = Modifier
@@ -1051,7 +1052,7 @@ fun BottomSheetNotice(
             shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
             dragHandle = null,
             scrimColor = Color.Black.copy(alpha = 0.5f),
-            windowInsets = WindowInsets.ime
+          //  windowInsets = WindowInsets.ime
         ) {
             Column(
                 modifier = Modifier

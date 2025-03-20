@@ -148,7 +148,7 @@ class SplashActivity : ComponentActivity() {
                     }
                 }
             }
-            viewModel.getForceUpdateAPI(versionName)
+            viewModel.getForceUpdateAPI(versionName.toString())
         }
 
         if (isForceUpdate) {

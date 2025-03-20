@@ -1,5 +1,6 @@
 package com.auro.application.ui.features.student.wallet.screens
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import androidx.activity.ComponentActivity
@@ -85,6 +86,7 @@ import java.time.format.DateTimeFormatter
 import java.util.Date
 
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @OptIn(ExperimentalMaterial3Api::class)
 @RequiresApi(Build.VERSION_CODES.O)
 @Preview
@@ -574,7 +576,7 @@ fun FilterDialogScreen(
             shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
             dragHandle = null,
             scrimColor = Color.Black.copy(alpha = 0.5f),
-            windowInsets = WindowInsets.ime
+          //  windowInsets = WindowInsets.ime
         ) {
             Column(
                 modifier = Modifier.wrapContentSize()

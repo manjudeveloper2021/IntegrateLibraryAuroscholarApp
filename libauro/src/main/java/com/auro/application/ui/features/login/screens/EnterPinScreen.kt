@@ -95,8 +95,6 @@ fun EnterPinScreen(
     val languageListName = stringResource(id = R.string.key_lang_list)
     var languageData = HashMap<String, String>()
     languageData = viewModel.getLanguageTranslationData(languageListName)
-
-
     var isDialogVisible by remember { mutableStateOf(false) }
     val encryptedPhoneNo = phoneNo?.encryptAES().toString().trim()
     // dialog for Recover Account

@@ -472,7 +472,7 @@ fun BottomSheetPracticeKYCDialogNotice(
             shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
             dragHandle = null,
             scrimColor = Color.Black.copy(alpha = 0.5f),
-            windowInsets = WindowInsets.ime
+          //  windowInsets = WindowInsets.ime
         ) {
             Column(
                 modifier = Modifier

@@ -29,6 +29,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
@@ -564,27 +565,43 @@ fun VerificationSubjectList(
                         .padding()
                         .padding(10.dp)
                 )
-                TextField(
+
+                OutlinedTextField(
                     value = searchText,
-                    onValueChange = { newText ->
-                        searchText = newText
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(color = Color.White), // Set background color to white
+                    onValueChange = { searchText = it },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
+                        .background(color = Color.White),
                     placeholder = {
                         Text(
                             "Search by concept name ", color = Color.Gray
                         )
-                    }, // Placeholder text color
-                    colors = TextFieldDefaults.textFieldColors(
-                        containerColor = Color.White,
-                        cursorColor = Black,
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent
-                    ),
-                    singleLine = true
+                    },
                 )
+
+
+//                TextField(
+//                    value = searchText,
+//                    onValueChange = { newText ->
+//                        searchText = newText
+//                    },
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .background(color = Color.White), // Set background color to white
+//                    placeholder = {
+//                        Text(
+//                            "Search by concept name ", color = Color.Gray
+//                        )
+//                    }, // Placeholder text color
+//                    colors = TextFieldDefaults,
+////                        .textFieldColors(
+////                        containerColor = Color.White,
+////                        cursorColor = Black,
+////                        focusedIndicatorColor = Color.Transparent,
+////                        unfocusedIndicatorColor = Color.Transparent
+////                    ),
+//                    singleLine = true
+//                )
 
             }
         }
@@ -1897,7 +1914,7 @@ fun FilterVerificationDialogScreen(
             shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
             dragHandle = null,
             scrimColor = Color.Black.copy(alpha = 0.5f),
-            windowInsets = WindowInsets.ime
+          //  windowInsets = WindowInsets.ime
         ) {
             Column(
                 modifier = Modifier.wrapContentSize()

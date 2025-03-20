@@ -62,6 +62,7 @@ import com.auro.application.ui.common_ui.CircleCheckbox
 import com.auro.application.ui.common_ui.TextFieldWithIcon
 import com.auro.application.ui.common_ui.components.TextWithIconOnLeft
 import com.auro.application.ui.common_ui.showWalletDatePickerDialog
+import com.auro.application.ui.features.login.models.LanguageTranslationsResponse
 import com.auro.application.ui.features.parent.model.GetQuizReportResposeModel
 import com.auro.application.ui.features.parent.model.GetQuizVerificationTableResponseModel
 import com.auro.application.ui.features.parent.model.GradeWiseSubjectResponseModel
@@ -269,6 +270,7 @@ fun TopBarFilterUi(
                         }
 
                         is NetworkStatus.Error -> {}
+                        else -> {}
                     }
                 }
 
@@ -786,28 +788,44 @@ private fun SearchBar(searchText: String) {
                     .padding()
                     .padding(10.dp)
             )
-            androidx.compose.material3.TextField(
+
+
+            OutlinedTextField(
                 value = searchText1,
-                onValueChange = { newText ->
-                    searchText1 = newText
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(color = Color.White), // Set background color to white
+                onValueChange = { searchText1 = it },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth()
+                    .background(color = Color.White),
                 placeholder = {
                     Text(
                         "Concept name ",
                         color = Color.Gray
                     )
-                }, // Placeholder text color
-                colors = TextFieldDefaults.textFieldColors(
-                    containerColor = Color.White,
-                    cursorColor = Black,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent
-                ),
-                singleLine = true
+                },
             )
+
+//            TextField(
+//                value = searchText1,
+//                onValueChange = { newText ->
+//                    searchText1 = newText
+//                },
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .background(color = Color.White), // Set background color to white
+//                placeholder = {
+//                    Text(
+//                        "Concept name ",
+//                        color = Color.Gray
+//                    )
+//                }, // Placeholder text color
+//                colors = TextFieldDefaults.textFieldColors(
+//                    containerColor = Color.White,
+//                    cursorColor = Black,
+//                    focusedIndicatorColor = Color.Transparent,
+//                    unfocusedIndicatorColor = Color.Transparent
+//                ),
+//                singleLine = true
+//            )
         }
     }
 }

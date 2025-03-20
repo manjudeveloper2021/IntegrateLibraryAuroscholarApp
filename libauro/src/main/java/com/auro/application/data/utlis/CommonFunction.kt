@@ -14,7 +14,7 @@ import androidx.annotation.RequiresApi
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.core.text.HtmlCompat
-import com.example.integratelibraryauroscholarapp.R
+import com.auro.application.R
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

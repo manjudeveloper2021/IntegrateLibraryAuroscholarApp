@@ -141,7 +141,12 @@ interface ApiService {
     suspend fun getCheckAdminUserType(): GetUserTypeListResponseModel
 
     @POST("v1/student/user/validate")  // using in login Screen
-    suspend fun getCheckUserPhoneNo(@Body user_mobile: Request): CheckPhoneNoResponseModel
+    suspend fun getCheckUserPhoneNo(@Body user_mobile: Request, @Body partnerId: Request, @Body userId: Request, @Body forcePartner: Request, @Body addNew: Request): CheckPhoneNoResponseModel
+
+
+//autologin api
+    @POST("v1/student/user/partnerAutoLogin")  // using in login Screen
+    suspend fun getAutoLogin(@Body mobileNo: Request): CheckPhoneNoResponseModel
 
     //    @POST("v1/student/user/validate/username")          // as it was required earlier
     @POST("v1/student/user/validate") // using in registration
