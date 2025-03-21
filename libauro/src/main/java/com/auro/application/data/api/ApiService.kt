@@ -3,6 +3,7 @@ package com.auro.application.data.api
 import com.auro.application.data.api.Constants.GET_API_VERSION
 import com.auro.application.repository.models.GetAppVersionResponseModel
 import com.auro.application.repository.models.GetLanguageListResponse
+import com.auro.application.ui.features.login.models.CheckAutoLoginResponseModel
 import com.auro.application.ui.features.login.models.CheckPhoneNoResponseModel
 import com.auro.application.ui.features.login.models.CheckUserNameResponseModel
 import com.auro.application.ui.features.login.models.GetDisclaimerResponseModel
@@ -141,12 +142,12 @@ interface ApiService {
     suspend fun getCheckAdminUserType(): GetUserTypeListResponseModel
 
     @POST("v1/student/user/validate")  // using in login Screen
-    suspend fun getCheckUserPhoneNo(@Body user_mobile: Request, @Body partnerId: Request, @Body userId: Request, @Body forcePartner: Request, @Body addNew: Request): CheckPhoneNoResponseModel
+    suspend fun getCheckUserPhoneNo(@Body user_mobile: Request): CheckPhoneNoResponseModel
 
 
 //autologin api
     @POST("v1/student/user/partnerAutoLogin")  // using in login Screen
-    suspend fun getAutoLogin(@Body mobileNo: Request): CheckPhoneNoResponseModel
+    suspend fun getAutoLogin(@Body mobileNo: Request, partnerId: Request, userId: Request, forcePartner: Request, addNew: Request): CheckAutoLoginResponseModel
 
     //    @POST("v1/student/user/validate/username")          // as it was required earlier
     @POST("v1/student/user/validate") // using in registration

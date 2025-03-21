@@ -1,5 +1,6 @@
 package com.example.integratelibraryauroscholarapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -27,14 +28,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import com.example.integratelibraryauroscholarapp.ui.theme.IntegrateLibraryAuroscholarAppTheme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,81 +55,88 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    IntegrateLibraryAuroscholarAppTheme {
-        Greeting("Android")
+    @Composable
+    fun Greeting(name: String, modifier: Modifier = Modifier) {
+        Text(
+            text = "Hello $name!",
+            modifier = modifier
+        )
     }
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun LoginScreen() {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var passwordVisible by remember { mutableStateOf(false) }
+    @Preview(showBackground = true)
+    @Composable
+    fun GreetingPreview() {
+        IntegrateLibraryAuroscholarAppTheme {
+            Greeting("Android")
+        }
+    }
 
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFFECEFF1))
-            .padding(16.dp)
-    ) {
-        Column(
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun LoginScreen() {
+        var username by remember { mutableStateOf("") }
+        var password by remember { mutableStateOf("") }
+        var passwordVisible by remember { mutableStateOf(false) }
+
+        Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 100.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .fillMaxSize()
+                .background(Color(0xFFECEFF1))
+                .padding(16.dp)
         ) {
-            Text(text = "Login", fontSize = 32.sp, color = Color(0xFF37474F))
-
-            OutlinedTextField(
-                value = username,
-                onValueChange = { username = it },
-                label = { Text("Username") },
-                singleLine = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Password") },
-                singleLine = true,
-                visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                trailingIcon = {
-                    val iconText = if (passwordVisible) "Hide" else "Show"
-                    TextButton(onClick = { passwordVisible = !passwordVisible }) {
-                        Text(iconText)
-                    }
-                },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Button(
-                onClick = { /* Handle login logic */ },
-                modifier = Modifier.fillMaxWidth().height(48.dp)
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 100.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                Text(text = "Login")
-            }
+                Text(text = "Login", fontSize = 32.sp, color = Color(0xFF37474F))
 
-            TextButton(
-                onClick = { /* Handle forgot password */ },
-                modifier = Modifier.align(Alignment.End)
-            ) {
-                Text(text = "Forgot Password?", color = Color(0xFF00796B))
+                OutlinedTextField(
+                    value = username,
+                    onValueChange = { username = it },
+                    label = { Text("Username") },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                OutlinedTextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = { Text("Password") },
+                    singleLine = true,
+                    visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    trailingIcon = {
+                        val iconText = if (passwordVisible) "Hide" else "Show"
+                        TextButton(onClick = { passwordVisible = !passwordVisible }) {
+                            Text(iconText)
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                val context = LocalContext.current
+                Button(
+                    onClick = {
+
+                        val intent = Intent(context, SDKActivity::class.java)
+                        context.startActivity(intent)
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(48.dp)
+                ) {
+                    Text(text = "Login")
+                }
+
+                TextButton(
+                    onClick = { /* Handle forgot password */ },
+                    modifier = Modifier.align(Alignment.End)
+                ) {
+                    Text(text = "Forgot Password?", color = Color(0xFF00796B))
+                }
             }
         }
     }

@@ -124,7 +124,8 @@ dependencies {
     implementation(libs.play.services.auth.api.phone)
     implementation(libs.play.services.auth)
     implementation(libs.play.services.auth.v2050)
-    implementation(libs.navigation.compose)
+    implementation(libs
+        .navigation.compose)
     implementation(libs.kotlinx.serialization.json)
     implementation (libs.accompanist.pager)
     implementation (libs.foundation)
@@ -146,8 +147,9 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.manjudeveloper2021"
                 artifactId = "IntegrateLibraryAuroscholarApp"
-                version = "0.1.6"
+                version = "0.1.7"
             }
         }
     }
 }
+

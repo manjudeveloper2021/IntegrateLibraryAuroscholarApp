@@ -11,6 +11,7 @@ import com.auro.application.data.sharedPref.SharedPref
 import com.auro.application.data.utlis.CommonFunction
 import com.auro.application.repository.StudentRepository
 import com.auro.application.repository.models.GetLanguageListResponse
+import com.auro.application.ui.features.login.models.CheckAutoLoginResponseModel
 import com.auro.application.ui.features.login.models.CheckPhoneNoResponseModel
 import com.auro.application.ui.features.login.models.CheckUserNameResponseModel
 import com.auro.application.ui.features.login.models.GetDisclaimerResponseModel
@@ -155,6 +156,15 @@ open class LoginViewModel @Inject constructor(
         MutableLiveData(NetworkStatus.Idle)
     val phoneNoResponse: LiveData<NetworkStatus<CheckPhoneNoResponseModel?>> =
         checkPhoneNoResponseModel
+
+
+
+    private val checkAutoLoginResponseModel: MutableLiveData<NetworkStatus<CheckAutoLoginResponseModel?>> =
+        MutableLiveData(NetworkStatus.Idle)
+    val autoLoginResponse: LiveData<NetworkStatus<CheckAutoLoginResponseModel?>> =
+        checkAutoLoginResponseModel
+
+
 
     private val usernameModel: MutableLiveData<NetworkStatus<CheckUserNameResponseModel?>> =
         MutableLiveData(NetworkStatus.Idle)
@@ -719,6 +729,24 @@ open class LoginViewModel @Inject constructor(
             }
         }
     }
+
+
+    fun getCheckAutoLoginRepo(phone: String,partnerid: String, userid: String, forcepartner: String, addnew: String) {
+        viewModelScope.launch {
+            if (CommonFunction.isNetworkAvailable(context)) {
+                try {
+                    checkAutoLoginResponseModel.postValue(NetworkStatus.Loading)
+                    val response = repository.getCheckAutoLoginRepo(Request(phone),Request(partnerid),Request(userid),Request(forcepartner),Request(addnew)).first()
+                    checkAutoLoginResponseModel.postValue(NetworkStatus.Success(response))
+                } catch (e: Exception) {
+                    checkAutoLoginResponseModel.postValue(NetworkStatus.Error(e.message.toString()))
+                }
+            } else {
+                checkAutoLoginResponseModel.postValue(NetworkStatus.Error("No internet connection"))
+            }
+        }
+    }
+
 
     /*fun languageTranslationAPI(langId: Int) {
         viewModelScope.launch {

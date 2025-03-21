@@ -2,6 +2,7 @@ package com.auro.application.repository
 
 import com.auro.application.data.api.ApiService
 import com.auro.application.repository.models.GetLanguageListResponse
+import com.auro.application.ui.features.login.models.CheckAutoLoginResponseModel
 import com.auro.application.ui.features.login.screens.models.AddStudent
 import com.auro.application.ui.features.login.screens.models.GetBoardListResponseModel
 import com.auro.application.ui.features.login.screens.models.GetDistrictResponseModel
@@ -127,6 +128,22 @@ class StudentRepository @Inject constructor(private val apiService: ApiService) 
     fun getCheckPhoneNoRepo(phone: Request): Flow<CheckPhoneNoResponseModel> = flow {
         try {
             val response = apiService.getCheckUserPhoneNo(phone)
+            emit(response)
+        } catch (http: HttpException) {
+            throw Exception(
+                getErrorMessage(
+                    http.response()?.errorBody()?.string()
+                )
+            ) // or emit a custom error model if needed
+        }
+
+    }.flowOn(Dispatchers.IO)
+
+
+
+    fun getCheckAutoLoginRepo(phone: Request,partnerid: Request, userid: Request, forcepartner: Request, addnew: Request ): Flow<CheckAutoLoginResponseModel> = flow {
+        try {
+            val response = apiService.getAutoLogin(phone,partnerid,userid,forcepartner,addnew)
             emit(response)
         } catch (http: HttpException) {
             throw Exception(
