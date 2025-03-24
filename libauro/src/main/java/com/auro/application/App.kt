@@ -1,5 +1,6 @@
 package com.auro.application
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.os.Build
 import android.os.Looper
@@ -9,9 +10,9 @@ import android.os.StrictMode.VmPolicy
 import dagger.hilt.android.HiltAndroidApp
 
 
-@HiltAndroidApp
 class App : Application() {
 
+    @SuppressLint("ObsoleteSdkInt")
     fun disableANR(){
         if (Build.VERSION.SDK_INT > 9) {
             val policy =

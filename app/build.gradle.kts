@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+   // id("dagger.hilt.android.plugin")
     kotlin("plugin.serialization")
 }
 android {
@@ -58,7 +59,8 @@ implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.material3)
     implementation(libs.play.services)
     implementation(libs.kotlinx.serialization.json.v160)
-
+   // implementation(libs.hilt.android)
+  //  implementation(libs.hilt.android.compiler.v2xx)
     // dependencies from module
   //  implementation(libs.androidx.appcompat)
 //    testImplementation(libs.junit)
@@ -165,5 +167,10 @@ implementation(libs.androidx.core.ktx)
 //    // Lottie for animation
 //    implementation(libs.lottie)
     implementation(project(mapOf("path" to ":libauro")))
+    implementation(libs.androidx.monitor)
+    implementation(libs.androidx.junit.ktx)
+    testImplementation(libs.junit.junit)
+    testImplementation(libs.junit.junit)
+    testImplementation(libs.junit.jupiter)
 }
 

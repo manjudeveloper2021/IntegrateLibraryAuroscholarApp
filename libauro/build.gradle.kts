@@ -1,6 +1,6 @@
 plugins {
     id("maven-publish")
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
     id("kotlin-parcelize")
@@ -147,7 +147,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.manjudeveloper2021"
                 artifactId = "IntegrateLibraryAuroscholarApp"
-                version = "0.1.7"
+                version = "0.1.8"
             }
         }
     }
